@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        height: 900px;
+      }
+      .container #filtre1{
+        top: 70px;
+        margin:0 auto;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+      }
+      .container #explain{
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width :250px;
+        height: 100px;
+        margin-top: 450px;
+        margin-bottom: 150px;
+        margin-left: 6px;
+        margin-right: 46px;
+      }
+
+
+      .back{
+        padding: 1px 1px;
+        border-radius: 50%;
+        border: 0px solid grey;
+        width: 250px;
+        float: left;
+        transition: all 0.2s ease-in-out;
+      }
+      .back:hover{
+        box-shadow: 0px 0px 15px rgba(255, 158, 62, .4);
+        color: rgb(255, 158, 62);
+      }
+      .close{
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        border: 0px solid grey;
+        width: 250px;
+        float: right;
+      }
+      .close:hover{
+        box-shadow: 0px 0px 15px rgba(60, 60, 60, .4);
+        color: rgb(0, 0, 0);
+      }
+      #load{
+        display: none;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>side door</title>
+  </head>
+  <body>
+    <button type="button" class="back" onclick="history.back()" name="backButton">back</button>
+    <button type="button" class="close" onclick="location.href = '1-2.html'" name="closeButton">close</button>
+
+
+    </script>
+
+    <script>
+        function chngimg() {
+            var img = document.getElementById('filtre1').src;
+            if (img.indexOf('image/1/04filtre-1.jpg')!=-1)
+             {
+                document.getElementById('filtre1').src  = 'image/1/04filtre-2.jpg';
+                filtre1.style.cursor = 's-resize';
+            }
+             else {
+               document.getElementById('filtre1').src = 'image/1/04filtre-1.jpg';
+               filtre1.style.cursor = 'n-resize';
+           }
+        }
+    </script>
+
+    <div class="container">
+      <img id=filtre1 alt="" src="image/1/04filtre-1.jpg" width="540px" onmouseover="this.style.cursor='n-resize'" onclick="chngimg()"  />
+      <div id=explain>
+        <p><i>filters (:o)</i>, 2020, filtre by replacing face on the fonction of Instagram camera, printed on paper, Clément Bleu—Pays / <i>Tactile frame</i>, 2019, glass frame, smartphone screen format, Clément Bleu—Pays </p>
+      </div>
+    </div>
+
+    <img id=load src="image/1/08shhhh.jpg" width="800px">
+  </body>
+</html>

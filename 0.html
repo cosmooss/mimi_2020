@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .title{
+      font-size: 6pt;
+      }
+      #bar{
+        position:absolute;
+        top: 10px; left: 1000px;
+      }
+      img{
+        position: absolute;
+        left: 372px;
+        top: 100px;
+      }
+      p{
+        position: absolute;
+        left: 870px;
+        top: 400px;
+      }
+      #worktitle{
+        display: none;
+      }
+      #handle{
+        cursor: grabbing;
+      }
+      #explain{
+        cursor: help;
+      }
+
+    </style>
+    <title>exhibition map</title>
+  </head>
+  <body>
+    <div class="title" id="bar">
+        <h1><a title="home" href="index.html">-</a></h1>
+    </div>
+
+      <img src="image/0/page0.jpg" width="33%" title="door" alt="exhibition_map" usemap="#exhibitmap">
+
+      <map name="exhibitmap">
+        <area id=handle shape="rect" coords="23,137,54,280" alt="door_handle" title="handle" href="0-1.html">
+        <area id=explain shape="rect" coords="310,320,428,437" alt="title_translate" title="work title" href="#">
+      </map>
+
+      <div class="work-title" id="worktitle">
+        <p>1&nbsp; Souvenir JANGAZZI<br>2&nbsp; When you arrive, write us<br>3&nbsp; filters (:o)<br>4&nbsp; Mycraft (Untitled)<br>5&nbsp; Self-ii<br>6&nbsp; The worth, 2020<br>7&nbsp; imaginary CAT-HORSE<br>8&nbsp; Shhhh......</p>
+      </div>
+    </div>
+
+    <script>
+      var div = document.getElementById( 'explain' );
+      div.onmouseleave = function() {
+        worktitle.style.display = 'none';
+      }
+      div.onmouseenter = function() {
+        worktitle.style.display = 'block';
+      }
+    </script>
+  </body>
+</html>

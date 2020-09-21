@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+
+      #img1{
+        position:absolute;
+        top: 20px;
+        left: 400px;
+        z-index: 2;
+      }
+      #img2{
+        position:absolute;
+        top: 45px;
+        left: 500px;
+        z-index: 2;
+
+        #img3{
+          position:absolute;
+          top: 45px;
+          left: 800px;
+          z-index: 2;
+        }
+      }
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+      <img id="img1" src="images/1/01bourse-1.jpg" width="440px">
+      <img id="img2" src="images/1/01bourse-2.jpg" width="440px">
+      <img id="img3" src="images/1/01bourse-3.jpg" width="440px">
+
+
+  </body>
+
+
+
+  <script>
+    $(document).ready(function(){
+            /*웹페이지 열었을 때*/
+            $("#img1").show();
+            $("#img2").hide();
+            $("#img3").hide();
+
+            /*img1을 클릭했을 때 img2를 보여줌*/
+            $("#img1").click(function(){
+                $("#img1").hide();
+                $("#img2").show();
+            });
+
+            /*img2를 클릭했을 때 img1을 보여줌*/
+            $("#img2").click(function(){
+                $("#img3").show();
+                $("#img2").hide();
+            });
+        });
+    </script>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script>
+        function chngimg() {
+            var img = document.getElementById('imgplus').src;
+            if (img.indexOf('images/1/04filtre-1.jpg')!=-1) {
+                document.getElementById('imgplus').src  = 'images/1/04filtre-2.jpg';
+            }
+             else {
+               document.getElementById('imgplus').src = 'images/1/04filtre-1.jpg';
+           }
+
+        }
+    </script>
+
+    <img id="imgplus" alt="" src="images/1/04filtre-1.jpg" width="100px" onmouseover="this.style.cursor='pointer'" onclick="chngimg()"   />
+
+  </body>
+  </html>

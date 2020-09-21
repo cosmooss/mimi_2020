@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+  div {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+  }
+  img{
+    position: absolute;
+    left: 1000px;
+    top: 10px;
+    filter: drop-shadow(5px 5px 5px #808080);
+    }
+  </style>
+  <div style="background:blue" onmouseover="alert('never works')"></div>
+  <div style="background:red" onmouseover="alert('over red!')"></div>
+  </head>
+
+
+  <body>
+    <!--
+    <img src="postermimi.png" width="3.5%" title="2020">
+    -->
+    <img src="postermimi.png" style="cursor: pointer; z-index: 1000; left: 1000px; top: 10px;" width="3.5%" id="postit">
+
+    <script>
+        postit.onmousedown = function(event) {
+          postit.style.position = 'absolute';
+          postit.style.zIndex = 1000;
+          document.body.appendChild(postit);
+
+          moveAt(event.pageX, event.pageY);
+
+          function moveAt(pageX, pageY) {
+            postit.style.left = pageX - postit.offsetWidth / 2 + 'px';
+            postit.style.top = pageY - postit.offsetHeight / 2 + 'px';
+          }
+
+          function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+          }
+
+          document.addEventListener('mousemove', onMouseMove);
+
+          postit.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            postit.onmouseup = null;
+          };
+
+          postit.ondragstart = function() {
+            return false;
+          };
+
+        };
+      </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>window_prop</title>
+    <meta charset="utf-8">
+    <script>
+      var $el = $("#content-box");
+      var elHeight = $el.outerHeight();
+      var elWidth = Sel.outerWidth();
+
+      var $wrapper = $("parent");
+
+      $wrapper.resizable({
+        resize: doResize
+      });
+
+      function doResize(event, ui) {
+        var scale, origin;
+
+        scale = Math.min(
+        ui.size.width / elWidth,
+        ui.size.height / elHeight
+      );
+
+      $el.css({
+        transform: "translate(-50%, -50%) + "scale(" + scale + ")"
+      });
+
+      }
+
+      var starterData = {
+          size: {
+            width: $wrapper.width(),
+            height: $wrapper.height()
+          }
+      }
+      doResize(null, starterData) ;
+    </script>
+    <style>
+      body {
+        background: #ccc
+        paddinng: 20px;
+      }
+      .content-box{
+        width: 600px;
+        height: 400px;
+        padding: 50px;
+        text-align: center;
+        background: white;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+      }
+      .parent {
+        padding:20px;
+        resize: both;
+        position: realtive;
+        background: #666;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent" id="parent">
+      <div class="content-box" id="content-box">
+        <h1>This is title.</h1>
+        <p> blah blah blah I hope it's gonna work. My design is intentional. I want to be scaled in such a way that scales the design. No reflows or anything, just straight up scaling. Kinda like SVG.</p>
+        <img src="postermimi.png" width="50%">
+      </div>
+    </div>
+  </body>
+</html>

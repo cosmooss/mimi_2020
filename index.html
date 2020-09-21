@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>exhibition</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      h1{
+        font-size: 15px;
+      }
+      #mi1 {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          top: 273px;
+          left: 408px;
+          /* text-align: center;
+          line-height: 100px; --> for IE  */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(10deg);
+
+      }
+
+      #mi2 {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          top: 600px;
+          left: 640px;
+          /* text-align: center;
+          line-height: 100px; --> for IE */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(340deg);
+      }
+      #bar{
+        position:absolute;
+        top: 10px; left: 1000px;
+      }
+      img {
+          position: absolute;
+          left: 1000px;
+          top: 10px;
+          filter: drop-shadow(5px 5px 5px #808080);
+          cursor: pointer;
+          z-index: 1000;
+          left: 1000px;
+          top: 10px;
+          width: 3.5%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="image/home/postermimi.png" title="2020" id="postit">
+    <div id="mi1"><h1>mi</h1></div>
+    <div id="bar"><h1><a href="0.html" title="You found a hole!">-</a></h1></div>
+    <div id="mi2" class="droppable"><h1>mi</h1></div>
+
+    <script>
+        let currentDroppable = null;
+
+        postit.onmousedown = function (event) {
+
+            document.body.appendChild(postit);
+
+            let shiftX = event.clientX - postit.getBoundingClientRect().left;
+            let shiftY = event.clientY - postit.getBoundingClientRect().top;
+
+            moveAt(event.pageX, event.pageY);
+
+            function moveAt(pageX, pageY) {
+                postit.style.left = pageX - shiftX + 'px';
+                postit.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+
+                postit.hidden = true
+                let elemBelow = document.elementFromPoint(event.clientX, event.clientY)
+                postit.hidden = false
+
+                if (!elemBelow) return
+
+                let droppableBelow = elemBelow.closest('.droppable')
+                if (currentDroppable != droppableBelow) {
+                    if (currentDroppable) {
+                        leaveDroppable(currentDroppable)
+                    }
+                  currentDroppable = droppableBelow
+
+                    if (currentDroppable) {
+                        enterDroppable(currentDroppable)
+                    }
+                }
+
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            postit.onmouseup = function () {
+                document.removeEventListener('mousemove', onMouseMove);
+                postit.onmouseup = null;
+                if (currentDroppable != null) location.href = "./1.html"
+            };
+
+        };
+
+        function enterDroppable(elem) {
+            elem.style.background = 'rgba(255, 0, 121, 0.5)';
+            elem.style.transform = 'skew(20deg)';
+        }
+
+        function leaveDroppable(elem) {
+            elem.style.background = '';
+            elem.style.transform = '';
+        }
+
+        postit.ondragstart = function () {
+            return false;
+        };
+    </script>
+
+
+  </body>
+</html>

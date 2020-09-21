@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .title{
+      font-size: 6pt;
+      }
+      #bar{
+        position:absolute;
+        top: 10px; left: 1000px;
+      }
+      .insidefrigo{
+        position:  relative;
+        left: 350px;
+        top: 40px;
+        width: 75%;
+      }
+      p{
+        position: absolute;
+        top:870px;
+        left:10px;
+        width: 75%;
+        padding-left:15px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      #explain{
+        color: white;
+      }
+      #chatval{
+        display: none;
+        position: absolute;
+        left: 70px;
+        top: 192px;
+      }
+      #freezer{
+        cursor: default;
+      }
+
+    </style>
+    <title>exhibition view</title>
+  </head>
+  <body>
+    <div class="title">
+      <div id="bar">
+        <h1><a href="index.html">-</a></h1>
+      </div>
+    </div>
+    <div class="openfrigo">
+      <div class="insidefrigo" id="insidefrigo">
+        <img src="image/0/page0-1_1.jpg" width="65%" title="exhibition view" alt="exhibition_view" usemap="#freezer">
+        <map name="freezer">
+          <area id="freezer" shape="rect" coords="62,168,311,303" alt="open_freezer" title="opened" href="./0-1.html">
+        </map>
+
+        <span id="explain"><p>was opened and closed the day before the quarantine ended in France. (2020)</p></span>
+      </div>
+      <div class="chatval"  id="chatval">
+        <img src="image/0/0-1_chatval.png" width=18% title="inside freezer">
+      </div>
+    </div>
+    <script>
+      var div = document.getElementById( 'freezer' );
+        div.onmouseleave = function() {
+        chatval.style.display = 'none';
+      }
+        div.onmouseenter = function() {
+        chatval.style.display = 'block';
+      }
+    </script>
+
+  </body>
+</html>

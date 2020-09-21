@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>exit</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+      a{
+        z-index: 2;
+      }
+      h1{
+        font-size: 15px;
+        z-index: 1;
+      }
+      #mi1 {
+          text-decoration: underline;
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          top: 273px;
+          left: 408px;
+          /* text-align: center;
+          line-height: 100px; --> for IE  */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(10deg);
+          z-index: 1;
+
+      }
+
+      #mi2 {
+          color: rgb(232, 79, 255);
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          top: 600px;
+          left: 640px;
+          /* text-align: center;
+          line-height: 100px; --> for IE */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(340deg);
+          z-index: 1;
+      }
+      #bar{
+        position:absolute;
+        top: 10px; left: 1000px;
+        z-index: 1;
+      }
+      #postit {
+          position: absolute;
+          left: 1000px;
+          top: 10px;
+          filter: drop-shadow(5px 5px 5px #808080);
+          cursor: pointer;
+          z-index: 2;
+          left: 1000px;
+          top: 10px;
+          width: 3.5%;
+      }
+
+      div.preload{
+        width:1420px;
+        height:800px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        background-color: pink;
+        z-index: 10;
+        justify-content:center;
+        align-items:center;
+        display: none;
+      }
+      div.preload > img{
+        z-index: 10;
+        width:960px;
+      }
+      div.preload > p {
+        z-index: 10;
+        width: 250px;
+        margin-top: 300px;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <img src="image/home/postermimi.png" title="2020" id="postit">
+      <div id="mi1" class="droppable"><h1>mi</h1></div>
+      <div id="bar"><h1><a href="0.html" title="You found a hole!">-</a></h1></div>
+      <div id="mi2"><h1>mi</h1></div>
+    </div>
+
+    <div class="preload" id="preload">
+      <img src="images/1/08shhhh.jpg" id="perf">
+      <p><i>Shhhh……</i>, 2020, performance in situ, 1’30", Jee Yeongseo</p>
+    </div>
+
+    <script>
+      $(function() {
+        $(".preload").fadeOut(2000, function() {
+          $(".page").fadeIn(1000);
+        });
+      });​
+ </script>
+
+    <script>
+        let currentDroppable = null;
+
+        postit.onmousedown = function (event) {
+
+            document.body.appendChild(postit);
+
+            let shiftX = event.clientX - postit.getBoundingClientRect().left;
+            let shiftY = event.clientY - postit.getBoundingClientRect().top;
+
+            moveAt(event.pageX, event.pageY);
+
+            function moveAt(pageX, pageY) {
+                postit.style.left = pageX - shiftX + 'px';
+                postit.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+
+                postit.hidden = true
+                let elemBelow = document.elementFromPoint(event.clientX, event.clientY)
+                postit.hidden = false
+
+                if (!elemBelow) return
+
+                let droppableBelow = elemBelow.closest('.droppable')
+                if (currentDroppable != droppableBelow) {
+                    if (currentDroppable) {
+                        leaveDroppable(currentDroppable)
+                    }
+                  currentDroppable = droppableBelow
+
+                    if (currentDroppable) {
+                        enterDroppable(currentDroppable)
+                    }
+                }
+
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            postit.onmouseup = function () {
+                document.removeEventListener('mousemove', onMouseMove);
+                postit.onmouseup = null;
+                if (currentDroppable != null) location.href = "https://clementbleupays.jimdofree.com/bed"
+            };
+
+        };
+
+        function enterDroppable(elem) {
+            elem.style.border = 'inset';
+            elem.style.background = 'rgba(125,125,125,0.4)';
+            elem.style.transform = 'skew(20deg)';
+        }
+
+        function leaveDroppable(elem) {
+            elem.style.border = '';
+            elem.style.background = '';
+            elem.style.transform = '';
+        }
+
+        postit.ondragstart = function () {
+            return false;
+        };
+    </script>
+  </body>
+</html>
